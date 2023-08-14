@@ -10,7 +10,7 @@ def load_cgid_ev_explicit(fname):
     ev_ex = experiment_dict['ev_ex']
     timestamps = ev_ex['timestamps'][0][0][0]
     stage_go_cue = ev_ex['Stage'][0][0]['GoCue'][0][0][0]
-    stage_grasp_cue = ev_ex['Stage'][0][0]['GraspCue'][0][0][0]
+    # stage_grasp_cue = ev_ex['Stage'][0][0]['GraspCue'][0][0][0]
 
     stage_stmv = ev_ex['Stage'][0][0]['StartMov'][0][0][0]
     stage_contact = ev_ex['Stage'][0][0]['Contact'][0][0][0]
@@ -26,7 +26,7 @@ def load_cgid_ev_explicit(fname):
     contact = timestamps[np.logical_and(stage_contact, completion_completed)]
     obpres = timestamps[np.logical_and(stage_object_present, completion_completed)]
     stmv = timestamps[np.logical_and(stage_stmv, completion_completed)]
-    grasppres = timestamps[np.logical_and(stage_grasp_cue, completion_completed)]
+    # grasppres = timestamps[np.logical_and(stage_grasp_cue, completion_completed)]
     
     ob = object_tc[np.logical_and(stage_go_cue, completion_completed)]
 
@@ -36,4 +36,5 @@ def load_cgid_ev_explicit(fname):
     grip = grip_power_block + grip_precision_block + grip_key_block 
 
     return {'go': go, 'contact': contact, 'obpres': obpres, 'ob': ob, 'grip': grip,
-            'stmv': stmv, 'grasppres': grasppres}
+            'stmv': stmv,}
+            # 'grasppres': grasppres}
